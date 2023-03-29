@@ -1,5 +1,5 @@
 ---
-title: "IT 취업을 위한 알고리즘 문제 풀이 with C/C++"
+title: "IT 취업을 위한 알고리즘 문제 풀이"
 layout: archive
 permalink: categories/coding-test-lesson
 author_profile: true

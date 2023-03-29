@@ -4,7 +4,7 @@ title:  "(코딩테스트 준비) 의사코드 작성 & 장점"
 categories:
   - Algorithm
 tags:
-  - [Algorithm, Coding Test, Cpp]
+  - [Algorithm, Coding Test]
 
 toc: true
 toc_sticky: true
