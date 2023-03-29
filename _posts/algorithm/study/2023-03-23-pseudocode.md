@@ -112,12 +112,12 @@ public Boolean superIncreasing(int[] arr) {
     if (arr[i] <= sum) {
       return false;
     }  
-  
     // 그 외의 경우엔 arr[i]를 합계에 더해준다
     else {
       sum = sum + arr[i]
     } 
   }  
+  
   // true값 리턴
   return true;
 }
@@ -125,28 +125,7 @@ public Boolean superIncreasing(int[] arr) {
 
 <br><br><br>
 
-### 🔥 실습 예제 2
 
-> 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수를 작성해야 합니다.
-
-```java
-// 의사코드 작성
-
-// 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수
-public String insertDash(String str) {
-  
-  // 결과를 담을 문자열 선언하고 첫값을 담아줌
-
-  // 문자열의 값을 1부터 끝까지 순회하면서
-
-    // charAt(i-1)과 charAt(i)가 모두 홀수라면 결과에 '-'추가
-  
-    // 결과값에 charAt(i) 추가
-    
-  // 결과값 리턴
-```
-
-<br>
 
 ### 🔥 실습 예제 2
 
@@ -184,10 +163,12 @@ public String insertDash(String str) {
   for (int i = 1; i < str.length(); i++) {
     int check1 = Character.getNumericValue(str.charAt(i - 1)) % 2;
     int check2 = Character.getNumericValue(str.charAt(i)) % 2;
+    
     // charAt(i-1)과 charAt(i)가 모두 홀수라면 결과에 '-'추가
     if(check1 != 0 && check2 != 0) {
       result = result + "-";
     }
+    
     // 결과값에 charAt(i) 추가
     result = result + str.charAt(i);
   }
@@ -243,6 +224,7 @@ public ArrayList<Stack> browserStack(String[] actions, String start) {
   
   // actions를 순회하면서 각각 케이스 해결
   for (String action : actions) {
+    
     // 앞으로 가기의 경우 현재 페이지를 꺼내 prevStack에 담고 nextStack을 꺼내 현재 페이지에 담음
     if (action == "1") {
       if (nextStack.size() != 0) {
@@ -264,6 +246,7 @@ public ArrayList<Stack> browserStack(String[] actions, String start) {
       current.push(action);
     }
   }
+  
   // result에 스택 입력후 리턴
   result.add(prevStack);
   result.add(current);
@@ -331,6 +314,7 @@ public int paveBox(Integer[] boxes) {
   while (queue.peek() != null) {
     // 비교대상이 될 인원을 큐에서 꺼내 box라는 변수에 담음
     int box = queue.poll();
+    
     // 현재 포장중인 boxing보다 작을경우 현재 포장인원수 추가
     if (box <= boxing) {
       boxPeople++;
@@ -339,13 +323,14 @@ public int paveBox(Integer[] boxes) {
         maxPeople++;
       }
     }
+    
     // box가 더 오래걸리면 현재 기준이되는 박스갯수를 box로 교체
     if (box > boxing) {
       boxing = box;
       // 교체 전 인원수가 최대 인원수보다 작거나 같을 경우 현재 포장인원 초기화 후 +1 해줌
       if (maxPeople >= boxPeople) {
-      boxPeople = 0;
-      boxPeople++;
+        boxPeople = 0;
+        boxPeople++;
       }
       // 그외의 경우엔 현재 포장인원을 최대값으로 설정 후 초기화 후 +1 해줌
       else {
@@ -354,19 +339,33 @@ public int paveBox(Integer[] boxes) {
         boxPeople++;
       }
     }
+    
     // 큐가 전부 비었을 경우 마지막까지 계산된 현재 포장인원과 최대 인원수를 비교함
     if (queue.isEmpty()) {
       maxPeople = Math.max(maxPeople, boxPeople);
     }      
   }
+  
   // 계산된 최대인원수 반환
   return maxPeople;
 }
-
 ```
 
 
 <br><br>
+
+## 📌 TIL 
+
+* 의사코드 작성을 위해 문제를 이해하고 로직을 구체화하는 과정을 통하면서, 문제를 더 명확하게 이해할 수 있었습니다.
+* 그리고 예제들이 예전에 풀어봤던 문제들이라 머리속에 이미 구조와 흐름을 잡아두고 있다고 생각했는데, 실제로 의사코드를 작성해가면서 제가 생각한것보다 훨씬 더 많은 부분에서 구체적인 계획을 세워야 한다는 것을 깨달았습니다.
+* 또한 이렇게 의사코드를 작성하고나니 실제 프로그래밍 언어로 코딩을 할때도 필요한 코드의 흐름과 구조가 쉽게 파악되서 작성시간이 단축된게 체감이 되었습니다.  
+* 그리고 에러 핸들링을 하는 과정에서도 의사코드라는 길잡이가 있으니 더 빠르게 문제해결이 가능했습니다.
+* 오늘 학습을 통해서 프로그래밍을 할때 의사코드 작성은 큰 도움이 된다는 것을 깨달았고, 앞으로도 더욱 많은 연습을 통해 프로그래밍 능력을 향상시켜 나갈 것입니다.
+
+
+
+
+  
 
 ***
 <br>
