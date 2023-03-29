@@ -1,5 +1,5 @@
 ---
-title:  "(C++) 문자열 검색 알고리즘 : 아호-코라식(Aho-Corasick) 알고리즘" 
+title:  "(테스트) 학습내용 업로드 테스트입니다" 
 
 categories:
   - Algorithm
@@ -9,8 +9,8 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2021-04-23
-last_modified_at: 2021-04-23
+date: 2023-03-29
+last_modified_at: 2023-03-29
 ---
 
 ## 🚀 서론
