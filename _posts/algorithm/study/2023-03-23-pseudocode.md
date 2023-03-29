@@ -148,6 +148,30 @@ public String insertDash(String str) {
 
 <br>
 
+### 🔥 실습 예제 2
+
+> 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수를 작성해야 합니다.
+
+```java
+// 의사코드 작성
+
+// 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수
+public String insertDash(String str) {
+  
+  // 결과를 담을 문자열 선언하고 첫값을 담아줌
+
+  // 문자열의 값을 1부터 끝까지 순회하면서
+
+    // charAt(i-1)과 charAt(i)가 모두 홀수라면 결과에 '-'추가
+  
+    // 결과값에 charAt(i) 추가
+    
+  // 결과값 리턴
+```
+
+<br>
+
+
 #### 💎 의사코드를 기반으로 실제 작성된 코드 💎
 
 ```java
@@ -155,15 +179,15 @@ public String insertDash(String str) {
 public String insertDash(String str) {
 
   // 결과를 담을 문자열 선언하고 첫값을 담아줌
-	String result = "" + str.charAt(0);
+  String result = "" + str.charAt(0);
   // 문자열의 값을 1부터 끝까지 순회하면서
   for (int i = 1; i < str.length(); i++) {
-		int check1 = Character.getNumericValue(str.charAt(i - 1)) % 2;
-		int check2 = Character.getNumericValue(str.charAt(i)) % 2;
+    int check1 = Character.getNumericValue(str.charAt(i - 1)) % 2;
+    int check2 = Character.getNumericValue(str.charAt(i)) % 2;
     // charAt(i-1)과 charAt(i)가 모두 홀수라면 결과에 '-'추가
     if(check1 != 0 && check2 != 0) {
-				result = result + "-";
-		}
+      result = result + "-";
+    }
     // 결과값에 charAt(i) 추가
     result = result + str.charAt(i);
   }
