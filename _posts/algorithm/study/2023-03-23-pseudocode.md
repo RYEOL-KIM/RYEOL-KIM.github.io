@@ -78,9 +78,9 @@ last_modified_at: 2023-03-29
 
 > 수를 요소로 갖는 배열을 입력받아, 각 요소들이 그 이전의 요소들의 합보다 큰지를 확인해야 합니다.
 
-<br>
-
 ```java
+// 의사코드 작성
+
 // 배열의 각 요소들이 그 이전의 요소들의 합보다 큰지 여부를 확인하는 함수
 public Boolean superIncreasing(int[] arr) {
 
@@ -94,7 +94,7 @@ public Boolean superIncreasing(int[] arr) {
   
 // true값 리턴
 ```
-<br><br>
+<br>
 
 #### 💎 의사코드를 기반으로 실제 작성된 코드 💎
 
@@ -129,9 +129,9 @@ public Boolean superIncreasing(int[] arr) {
 
 > 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수를 작성해야 합니다.
 
-<br>
-
 ```java
+// 의사코드 작성
+
 // 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수
 public String insertDash(String str) {
   
@@ -146,11 +146,9 @@ public String insertDash(String str) {
   // 결과값 리턴
 ```
 
-<br><br>
+<br>
 
 #### 💎 의사코드를 기반으로 실제 작성된 코드 💎
-
-
 
 ```java
 // 문자열을 입력받아 연속된 한자리 홀수 숫자 사이에 '-'를 추가한 문자열을 리턴하는 함수
@@ -173,9 +171,178 @@ public String insertDash(String str) {
   return result;
 }
 ```
+<br><br>
+
+### 🔥 실습 예제 3
+
+> 브라우저의 뒤로 가기, 앞으로 가기 기능을 구현해야 합니다
+
+```java
+// 의사코드 작성
+
+// 행동순서를 입력받아 마지막 페이지와 방문했던 페이지를 반환하는 함수
+public ArrayList<Stack> browserStack(String[] actions, String start) {
+  
+  // 마지막 페이지, 뒤로가기, 앞으로가기 스택과 이 모두를 담을 결과 변수 선언
+  
+  // 현재 페이지를 current에 push 
+
+  // actions를 순회하면서 각각 케이스 해결
+
+    // 앞으로 가기의 경우 현재 페이지를 꺼내 prevStack에 담고 nextStack을 꺼내 현재 페이지에 담음
+  
+    // 뒤로 가기의 경우 현재 페이지를 꺼내 nextStack에 담고 prevStack을 꺼내 현재 페이지에 담음
+    
+    // 그외의 경우는 현재 페이지를 꺼내 prevStack에 담고 주어진 행동을 현재 페이지에 넣음 
+    
+  // result에 스택 입력후 리턴
+```
+
+<br>
+
+#### 💎 의사코드를 기반으로 실제 작성된 코드 💎
+
+
+
+```java
+// 행동순서를 입력받아 마지막 페이지와 방문했던 페이지를 반환하는 함수
+public ArrayList<Stack> browserStack(String[] actions, String start) {
+  
+  // 마지막 페이지, 뒤로가기, 앞으로가기 스택과 이 모두를 담을 결과 변수 선언
+  Stack<String> prevStack = new Stack<>();
+  Stack<String> nextStack = new Stack<>();
+  Stack<String> current = new Stack<>();
+  ArrayList<Stack> result = new ArrayList<>();
+  
+  // 현재 페이지를 current에 push 
+  current.push(start);
+  
+  // actions를 순회하면서 각각 케이스 해결
+  for (String action : actions) {
+    // 앞으로 가기의 경우 현재 페이지를 꺼내 prevStack에 담고 nextStack을 꺼내 현재 페이지에 담음
+    if (action == "1") {
+      if (nextStack.size() != 0) {
+        prevStack.push(current.pop());
+        current.push(nextStack.pop());
+      }
+    }
+    // 뒤로 가기의 경우 현재 페이지를 꺼내 nextStack에 담고 prevStack을 꺼내 현재 페이지에 담음
+    else if (action == "-1") {
+      if (prevStack.size() != 0) {
+        nextStack.push(current.pop());
+        current.push(prevStack.pop());
+      }
+    }
+    // 그외의 경우는 현재 페이지를 꺼내 prevStack에 담고 주어진 행동을 현재 페이지에 넣음 
+    else {
+      nextStack.clear();
+      prevStack.push(current.pop());
+      current.push(action);
+    }
+  }
+  // result에 스택 입력후 리턴
+  result.add(prevStack);
+  result.add(current);
+  result.add(nextStack);
+
+  return result;
+}
+```
+
 
 <br><br>
 
+
+### 🔥 실습 예제 4
+
+> 박스 포장대에서 최대 몇명이 한꺼번에 나갈 수 있는지 알아내야 합니다
+
+
+```java
+// 의사코드 작성
+
+// 인원순서대로 포장할 박스갯수가 담긴 배열을 받아서 동시에 나갈 수 있는 최대인원수를 반환하는 함수 
+public int paveBox(Integer[] boxes) {
+  
+  // boxes를 입력받는 LinkedList 형태의 새로운 큐를 선언
+  
+  // 최대인원 수, 현재 기준 박스갯수, 현재 기준 포장인원을 담을 변수 선언  
+
+  // 큐에 담긴 인원들이 전부 나갈때까지 반복하는 반복문 작성
+
+    // 비교대상이 될 인원을 큐에서 꺼내 box라는 변수에 담음
+    
+    // 현재 포장중인 boxing보다 작을경우 현재 포장인원수 추가
+    
+      // 현재 포장인원수가 최대인원수보다 클경우 최대인원수 갱신
+  
+    // box가 더 오래걸리면 현재 기준이되는 박스갯수를 box로 교체
+    
+      // 교체 전 인원수가 최대 인원수보다 작거나 같을 경우 현재 포장인원 초기화 후 +1 해줌
+      
+      // 그외의 경우엔 현재 포장인원을 최대값으로 설정 후 초기화 후 +1 해줌
+      
+    // 큐가 전부 비었을 경우 마지막까지 계산된 현재 포장인원과 최대 인원수를 비교함
+    
+  // 계산된 최대인원수 반환
+```
+
+<br>
+
+#### 💎 의사코드를 기반으로 실제 작성된 코드 💎
+
+```java
+// 인원순서대로 포장할 박스갯수가 담긴 배열을 받아서 동시에 나갈 수 있는 최대인원수를 반환하는 함수 
+public int paveBox(Integer[] boxes) {
+  
+  // boxes를 입력받는 LinkedList 형태의 새로운 큐를 선언
+  Queue<Integer> queue = new LinkedList<>(Arrays.asList(boxes));
+  
+  // 최대인원 수, 현재 기준 박스갯수, 현재 기준 포장인원을 담을 변수 선언  
+  int maxPeople = 0;
+  int boxing = 0;
+  int boxPeople = 0;
+
+  // 큐에 담긴 인원들이 전부 나갈때까지 반복하는 반복문 작성
+  while (queue.peek() != null) {
+    // 비교대상이 될 인원을 큐에서 꺼내 box라는 변수에 담음
+    int box = queue.poll();
+    // 현재 포장중인 boxing보다 작을경우 현재 포장인원수 추가
+    if (box <= boxing) {
+      boxPeople++;
+      // 현재 포장인원수가 최대인원수보다 클경우 최대인원수 갱신
+      if (maxPeople < boxPeople) {
+        maxPeople++;
+      }
+    }
+    // box가 더 오래걸리면 현재 기준이되는 박스갯수를 box로 교체
+    if (box > boxing) {
+      boxing = box;
+      // 교체 전 인원수가 최대 인원수보다 작거나 같을 경우 현재 포장인원 초기화 후 +1 해줌
+      if (maxPeople >= boxPeople) {
+      boxPeople = 0;
+      boxPeople++;
+      }
+      // 그외의 경우엔 현재 포장인원을 최대값으로 설정 후 초기화 후 +1 해줌
+      else {
+        maxPeople = boxPeople;
+        boxPeople = 0;
+        boxPeople++;
+      }
+    }
+    // 큐가 전부 비었을 경우 마지막까지 계산된 현재 포장인원과 최대 인원수를 비교함
+    if (queue.isEmpty()) {
+      maxPeople = Math.max(maxPeople, boxPeople);
+    }      
+  }
+  // 계산된 최대인원수 반환
+  return maxPeople;
+}
+
+```
+
+
+<br><br>
 
 ***
 <br>
