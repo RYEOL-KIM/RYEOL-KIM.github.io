@@ -2,7 +2,7 @@
 title:  "[JAVA] 알고리즘 - [GREEDY] 짐 나르기 ⭐"
 
 categories:
-  - Programmers
+  - Algorithm
 tags:
   - [Algorithm, Coding Test]
 
