@@ -90,7 +90,7 @@ last_modified_at: 2023-03-30
 public int movingStuff(int[] stuff, int limit) {
     
     // 최소, 최대 무게를 구하기 위해 배열을 정렬
-    // 최소, 최대 인덱스를 담을 변수와 포장된 박스 갯수를 담을 변수를 선언
+    // 최소, 최대 무게의 인덱스를 담을 변수와 포장된 박스 갯수를 담을 변수를 선언
 
     // 가벼운 측이 무거운 측을 넘어서는 순간 종료되는 반복문 작성
         // 현재 최소, 최대 무게의 합이 포장 무게한도 이하라면 
@@ -109,24 +109,24 @@ public int movingStuff(int[] stuff, int limit) {
 public int movingStuff(int[] stuff, int limit) {
   // 최소, 최대 무게를 구하기 위해 배열을 정렬
   Arrays.sort(stuff);
-  // 최소, 최대 인덱스를 담을 변수와 포장된 박스 갯수를 담을 변수를 선언
-  int left = 0;
-  int right = stuff.length - 1;
+  // 최소, 최대 무게의 인덱스를 담을 변수와 포장된 박스 갯수를 담을 변수를 선언
+  int minIdx = 0;
+  int maxIdx = stuff.length - 1;
   int boxes = 0;
 
   // 가벼운 측이 무거운 측을 넘어서는 순간 종료되는 반복문 작성
-  while (left <= right) {
+  while (minIdx <= maxIdx) {
     // 현재 최소, 최대 무게의 합이 포장 무게한도 이하라면 
-    if (stuff[left] + stuff[right] <= limit) {
+    if (stuff[minIdx] + stuff[maxIdx] <= limit) {
         // 두 짐을 박스에 담고, 다음 최선책으로 넘어감
         boxes += 1;
-        left += 1;
-        right -= 1;
+        minIdx += 1;
+        maxIdx -= 1;
     // 합이 포장 무게한도를 초과하면
     } else {
         // 가장 무거운 짐만 박스에 담고, 다음 최선책으로 넘어감
         boxes += 1;
-        right -= 1;
+        maxIdx -= 1;
     }
   }
   // 집계된 박스 갯수 리턴
@@ -138,9 +138,7 @@ public int movingStuff(int[] stuff, int limit) {
 
 ### 🔥 레퍼런스 코드
 
-* 위에서 내가 작성해본 코드는 실시간으로 비교대상을 변경하고 동시에 박스포장을 했으므로 '투 포인터 알고리즘'에 해당한다고 한다.
-* 레퍼런스는 선택+적절성검사를 하며 2개의 짐이 들은 박스 수를 구하고 최대박스갯수(= 배열의 길이)에서 차감하는 식으로 구했다.
-* 내가 구한 코드도 문제가 요구하는 답안을 통과했다. 하지만 이번엔 탐욕 알고리즘을 학습하고자 하는 시간이었다. 본래의 목적을 위해 레퍼런스 코드를 다시 살펴보면서 탐욕 알고리즘이 어떻게 쓰이는지 확인 해보자.
+* 내가 구한 코드도 문제가 요구하는 답안을 통과했지만, 레퍼런스 코드를 다시 살펴보면서 탐욕 알고리즘이 어떤 방식으로 쓰이는지 확인 해보자.
 
 ```java
 public class Solution {
